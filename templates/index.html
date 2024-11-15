@@ -11,6 +11,7 @@
 {% block content %}
 {% if user.is_authenticated %}
 <div class="h2">Welcome {{ user.first_name }} {{ user.last_name }}</div>
+<a href="{%url 'point:index'%}" class="btn btn-primary">Point</a>
 <a href="{%url 'accounts:logout' %}" class="btn btn-primary">Logout</a>
 {% else %}
 <a href="{% url 'accounts:signup' %}" class="btn btn-primary">Signup</a>
