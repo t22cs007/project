@@ -1,14 +1,17 @@
+# forms.py (contributionApp)
 from django import forms
-from .models import Post
+from .models import Point
 
-class PostForm(forms.ModelForm):
-    content = forms.CharField(label="point",max_length=50)
-
-    # def __init__(self,*args,**kwargs):
-    #     super().__init__(*args,**kwargs) 
-    #     for field in self.fields.values():
-    #         field.widget.attrs['class'] = 'form-control'
-    # class Meta:
-    #     model = Post        
-    #     fields = ('title','post',)
-            
+class ContributionForm(forms.ModelForm):
+    class Meta:
+        model = Point
+        fields = ['activity_name', 'description', 'points_requested', 'date']
+        widgets = {
+            'date': forms.DateInput(attrs={'type': 'date'}),
+        }
+        labels = {
+            'activity_name': '活動名',
+            'description': '活動内容',
+            'points_requested': '申請ポイント数',
+            'date': '活動日',
+        }

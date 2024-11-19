@@ -1,0 +1,15 @@
+<!-- templates/contribution/create.html -->
+<!DOCTYPE html>
+<html>
+<head>
+    <title>社会貢献活動申請</title>
+</head>
+<body>
+    <h1>社会貢献活動ポイント申請フォーム</h1>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">申請</button>
+    </form>
+</body>
+</html>

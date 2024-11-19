@@ -1,13 +1,16 @@
-from django.shortcuts import render, resolve_url
-from .forms import PostForm
+from django.shortcuts import render, resolve_url, redirect
+# from .forms import ContributionForm, PostForm
 from django.contrib.auth.mixins import UserPassesTestMixin
 from django.views import generic
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views.generic.edit import CreateView
 from django.views.generic import TemplateView
-from django.urls import reverse_lazy
+from django.urls import reverse_lazy, reverse
+from .models import Point
+from .forms import ContributionForm
+from django.contrib.auth.decorators import login_required
 
-from .models import Author
+# from .models import Author
 
 class IndexView(TemplateView):
     """ ホームビュー """
@@ -22,7 +25,7 @@ class OnlyYouMixin(UserPassesTestMixin):
 
 class PostUpload(OnlyYouMixin, generic.CreateView):
     template_name = 'point/post_upload.html'
-    form_class = PostForm
+    form_class = Point
 
     def form_valid(self, form):
         form.instance.user = self.request.user  # 修正箇所
@@ -44,3 +47,18 @@ class PostCreateView(LoginRequiredMixin, CreateView):
         form.instance.author = self.request.user
         return super().form_valid(form)
     
+@login_required
+def create(request):
+    if request.method == "POST":
+        form = ContributionForm(request.POST)
+        if form.is_valid():
+            contribution = form.save(commit=False)
+            contribution.user = request.user
+            contribution.save()
+            return redirect('point:point_success')  # 成功ページにリダイレクト
+    else:
+        form = ContributionForm()
+    return render(request, 'point/create.html', {'form': form})
+
+def point_success(request):
+    return render(request, 'point/point_success.html')
