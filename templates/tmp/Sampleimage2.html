@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ショッピングサイト</title>
+    <style>
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #f8f9fa;
+            border-bottom: 2px solid #000;
+            padding: 10px;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+        .navbar a {
+            text-decoration: none;
+            margin: 0 15px;
+            font-size: 18px;
+            color: #000;
+        }
+        .navbar .left-menu,
+        .navbar .right-menu {
+            display: flex;
+            align-items: center;
+        }
+        .main-content {
+            margin: 70px 20px 20px;
+            font-size: 18px;
+        }
+        .badge {
+            background-color: red;
+            color: white;
+            border-radius: 50%;
+            padding: 3px 7px;
+            font-size: 12px;
+        }
+        .product-list {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+            margin: 20px 0;
+        }
+        .product {
+            border: 1px solid #ddd;
+            padding: 10px;
+            text-align: center;
+        }
+        .product img {
+            max-width: 100%;
+            height: auto;
+        }
+    </style>
+</head>
+<body>
+    <!-- ナビゲーションバー -->
+    <div class="navbar" id="navbar">
+        <div class="left-menu">
+            <a href="#">TOP</a>
+            <a href="#">商品一覧</a>
+            <a href="#">ポイント申請</a>
+            <a href="#">ログアウト</a>
+        </div>
+        <div class="right-menu">
+            <a href="#">お知らせ <span class="badge">1</span></a>
+            <a href="#">カート</a>
+            <a href="#">マイページ</a>
+        </div>
+    </div>
+
+    <!-- メインコンテンツ -->
+    <div class="main-content">
+        <p>こんにちは <strong>田中 さん</strong></p>
+        <p>ポイント残高: <strong>300ポイント</strong> (当月失効: <strong>100ポイント</strong>)</p>
+
+        <!-- 商品一覧 -->
+        <div class="product-list">
+            <div class="product">
+                <img src="sample1.jpg" alt="スマートフォン">
+                <p>商品名: スマートフォン</p>
+                <p>価格: 50,000円</p>
+                <button>カートに追加</button>
+            </div>
+            <div class="product">
+                <img src="sample2.jpg" alt="ノートパソコン">
+                <p>商品名: ノートパソコン</p>
+                <p>価格: 100,000円</p>
+                <button>カートに追加</button>
+            </div>
+            <div class="product">
+                <img src="sample3.jpg" alt="ヘッドフォン">
+                <p>商品名: ヘッドフォン</p>
+                <p>価格: 8,000円</p>
+                <button>カートに追加</button>
+            </div>
+            <div class="product">
+                <img src="sample4.jpg" alt="タブレット">
+                <p>商品名: タブレット</p>
+                <p>価格: 30,000円</p>
+                <button>カートに追加</button>
+            </div>
+            <div class="product">
+                <img src="sample5.jpg" alt="カメラ">
+                <p>商品名: カメラ</p>
+                <p>価格: 70,000円</p>
+                <button>カートに追加</button>
+            </div>
+            <div class="product">
+                <img src="sample6.jpg" alt="テレビ">
+                <p>商品名: テレビ</p>
+                <p>価格: 120,000円</p>
+                <button>カートに追加</button>
+            </div>
+            <div class="product">
+                <img src="sample7.jpg" alt="スピーカー">
+                <p>商品名: スピーカー</p>
+                <p>価格: 15,000円</p>
+                <button>カートに追加</button>
+            </div>
+            <div class="product">
+                <img src="sample8.jpg" alt="電子書籍リーダー">
+                <p>商品名: 電子書籍リーダー</p>
+                <p>価格: 12,000円</p>
+                <button>カートに追加</button>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
