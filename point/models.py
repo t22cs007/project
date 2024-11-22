@@ -1,6 +1,7 @@
 from django.db import models
 from django.conf import settings
 from django.utils import timezone
+from datetime import date,timedelta
 from django.utils.translation import gettext_lazy as _
 from accounts.models import User
 import random
@@ -26,13 +27,25 @@ def random_url():
 # # Create your models here.
 
 # models.py (アプリケーション名: contributionApp)
+from django.core.validators import MaxValueValidator,MinValueValidator
+
+POINT_CHOICES = (
+    (50,'50'),
+    (100,'100'),
+    (150,'150'),
+    (200,'200'),
+    (250,'250'),
+    (300,'300'),
+)
 
 class Point(models.Model):
     # user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
     activity_name = models.CharField(max_length=255)
     description = models.TextField()
-    points_requested = models.PositiveIntegerField()
-    date = models.DateField()
+    # points_requested = models.PositiveIntegerField(default=50,validators=[MinValueValidator(50),MaxValueValidator(300)])
+    points_requested = models.PositiveIntegerField(verbose_name="ポイント",choices=POINT_CHOICES)
+    date = models.DateField(default=date.today())
+    # date = models.DateField(default=lambda: date.today()+timedelta(days=5))
     is_approved = models.BooleanField(default=False)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
