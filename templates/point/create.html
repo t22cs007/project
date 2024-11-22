@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+
+{% block title %}
+<div class="h1 text-center my-4">社会貢献活動ポイント申請フォーム</div>
+{% endblock %}
+
+{% block content %}
+<div class="container my-5">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <!-- カードスタイル -->
+            <div class="card shadow-sm">
+                <div class="card-body">
+                    <!-- フォーム -->
+                    <form method="post">
+                        {% csrf_token %}
+                        
+                        <!-- フォーム全体 -->
+                        <div class="form-container">
+                            {{ form.as_p }}
+                        </div>
+                        
+                        <!-- ボタンエリア -->
+                        <div class="mt-4 d-flex justify-content-end gap-3">
+                            <a href="{% url 'point:index' %}" class="btn btn-secondary">もどる</a>
+                            <button type="submit" class="btn btn-primary">申請</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
