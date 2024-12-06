@@ -1,0 +1,209 @@
+/* #region Notifications */
+.notifications-wrapper {
+    padding: 5px 20px 5px 20px; /* Add padding around the notifications wrapper */
+}
+
+.notifications-title {
+    font-size: 15px;
+    font-weight: bold;
+    margin-bottom: 5px; /* Add spacing below the title */
+}
+
+.notifications-genre-buttons {
+    display: flex;
+    gap: 10px; /* Space between buttons */
+    margin-bottom: 10px; /* Space between buttons and table */
+}
+
+.notifications-genre-buttons button {
+    border: 1px solid #ccc; /* Light border around the buttons */
+    border-radius: 5px; /* Rounded corners */
+    background-color: white; /* Default background */
+    padding: 5px 15px; /* Adjust padding for button size */
+    font-size: 14px;
+    font-weight: bold;
+    cursor: pointer; /* Add pointer cursor on hover */
+    transition: background-color 0.3s, color 0.3s; /* Smooth hover transition */
+}
+
+.notifications-genre-buttons button:hover {
+    background-color: lightgray; /* Hover background color */
+    color: black; /* Hover text color */
+}
+
+.notifications-genre-buttons .active {
+    background-color: gray; /* Active button background */
+    color: white; /* Active button text color */
+}
+
+.notifications {
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 0;
+    width: 100%; /* Table spans full width of container */
+    border-spacing: 0; /* Ensures table borders are compact */
+    border-collapse: collapse; /* Removes double borders */
+    table-layout: fixed; /* Ensures columns respect the defined widths */
+}
+
+.notifications th,
+.notifications td {
+    border: 1px solid #ccc;
+    padding: 5px;
+    text-align: left;
+    white-space: nowrap; /* Prevents content from wrapping */
+    overflow: hidden; /* Ensures content doesn't spill out */
+    height: 25px; /* Fixed height for every row */
+    vertical-align: middle; /* Ensures text is vertically centered */
+}
+
+.notifications th:nth-child(1),
+.notifications td:nth-child(1) {
+    width: 10%; /* Set smaller width for 日付 (Date) */
+    text-align: center; /* Center align for Date */
+}
+
+.notifications th:nth-child(2),
+.notifications td:nth-child(2) {
+    width: 10%; /* Set smaller width for コミュニティ (Community) */
+}
+
+.notifications th:nth-child(3),
+.notifications td:nth-child(3) {
+    width: 50%; /* Allocate more width to 内容 (Content) */
+}
+
+.notifications th {
+    background-color: #f2f2f2; /* Light gray background for table header */
+    font-weight: bold;
+    text-align: center;
+    height: 20px; /* Ensures header row also has fixed height */
+}
+
+.notifications td {
+    background-color: white;
+    font-size: 14px;
+}
+
+.notifications tbody tr:hover {
+    background-color: blue; /* Change background color on hover */
+    color: black; /* Change text color on hover */
+    cursor: pointer; /* Show pointer cursor on hover */
+}
+/* #endregion Notifications */
+/* #region Calendar */
+.calendar {
+    margin: 20px 20px 20px 20px;
+    display: flex; /* Use flexbox for centering */
+    flex-direction: column; /* Ensure content stacks vertically */
+    align-items: center; /* Center horizontally */
+    gap: 0px; /* Add space between elements (like buttons and table) */
+}
+
+.calendar .navigation-wrapper {
+    display: flex; /* Use flexbox for layout */
+    justify-content: center; /* Center the buttons */
+    align-items: center; /* Vertically center elements */
+    position: relative; /* Enable positioning for the current month */
+    width: 100%; /* Make the wrapper span the full width */
+    margin-bottom: 0px; /* Add spacing below the navigation row */
+}
+
+.calendar .current-month {
+    position: absolute; /* Position it relative to the navigation wrapper */
+    left: 0; /* Align it to the left */
+    font-size: 25px; /* Adjust font size for the current month text */
+    font-weight: bold;
+    margin-left: 0px; /* Add spacing from the edge */
+}
+
+.calendar .navigation {
+    display: flex;
+    justify-content: center; /* Center buttons horizontally */
+    gap: 10px; /* Add space between buttons */
+    margin-bottom: 5px; /* Space below the buttons */
+}
+
+.calendar .navigation button {
+    display: flex; /* Make the button a flex container */
+    align-items: center; /* Center content vertically */
+    justify-content: center; /* Align content horizontally */
+    gap: 2px; /* Space between icon and text */
+    padding: 5px 10px; /* Adjust padding for better appearance */
+    font-size: 14px;
+    background-color: white;
+    border: 1px solid gray;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.calendar .navigation button:nth-child(2) {
+    background-color: black; /* Set background color for the second button */
+    color: white; /* Set text color for the second button */
+}
+
+.calendar .navigation button img {
+    height: 20px; /* Adjust icon size */
+    width: 20px;
+}
+
+.calendar .navigation button:hover {
+    background-color: lightgray; /* Change background color on hover */
+    color: black; /* Ensure text color changes appropriately on hover */
+}
+
+.calendar table {
+    width: 100%; /* The table will span the full width of its container */
+    border-collapse: collapse; /* Removes extra space between cells */
+    table-layout: fixed; /* Forces all columns to have the same width */
+}
+
+/* Adjust the header (days row) independently */
+.calendar th {
+    border: 1px solid black;
+    text-align: center;
+    background-color: lightgray; /* Optional: Light gray background for headers */
+    font-weight: bold; /* Bold text for header cells */
+    font-size: 14px;
+    height: 20px; /* Set specific height for the header row */
+    padding: 5px;
+}
+
+/* Adjust the data (dates rows) independently */
+.calendar td {
+    border: 1px solid black;
+    text-align: left;
+    vertical-align: top;
+    padding: 10px; /* Remove extra padding for precise sizing */
+    height: 40px; /* Set specific height for the date rows */
+    width: calc(100% / 7); /* Divide the table width  equally for 7 days */
+}
+
+.calendar .date-cell {
+    border: 1px solid black;
+    text-align: left;
+    vertical-align: top;
+    padding: 10px;
+    height: 50px; /* Specific height for cells with dates */
+    background-color: white; /* Default background color */
+}
+
+.calendar .empty-cell {
+    border: 1px solid black;
+    text-align: left;
+    vertical-align: top;
+    padding: 5px;
+    height: 30px; /* Specific height for cells without dates */
+    background-color: #f9f9f9; /* Light gray background for empty cells */
+}
+
+.calendar .event {
+    color: red;
+    font-weight: bold;
+}
+
+.calendar td:hover {
+    background-color: lightblue; /* Highlight the cell on hover */
+}
+/* #endregion Calendar */

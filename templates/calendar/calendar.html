@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- Bootstrap5のCDNを設定 -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+  <link rel="stylesheet" href="styles1.css">
+  <title>Account</title>
+</head>
+
+<body>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
+  
+  <!-- ナビゲーションバー -->
+  <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="{% url 'accounts:index' %}">MySite</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav me-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'accounts:index' %}">TOP</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">商品一覧</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'point:index' %}">ポイント申請</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link btn btn-secondary text-light" href="{% url 'accounts:logout' %}">Logout</a>
+          </li>
+        </ul>
+        <ul class="navbar-nav">
+          <li class="nav-item">
+            <a class="nav-link" href="#">お知らせ <span class="badge bg-danger">0</span></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">カート</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">マイページ</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- コンテンツ -->
+  <div class="container mt-5 pt-5 text-center">
+    {% block title %}
+    {% endblock %}
+    {% block content %}
+    {% endblock %}
+
+    <div class="notifications-wrapper">
+        <div class="notifications-title">お知らせ</div>
+        <div class="notifications-genre-buttons">
+            <button>ポイント関連</button>
+            <button>部署関連</button>
+            <button>全て</button>
+        </div>
+        <table class="notifications">
+            <thead>
+                <tr>
+                    <th>更新日時</th>
+                    <th>コミュニティ</th>
+                    <th>内容</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+  </div>
+
+  <div class="calendar">
+    <!-- Navigation and current month -->
+    <div class="navigation-wrapper">
+        <!-- Current month on the top left -->
+        <div class="current-month">12月</div>
+
+        <!-- Navigation buttons centered -->
+        <div class="navigation">
+            <button>
+                <img src="arrowLeft.png" alt="Left Arrow">
+                前月
+            </button>
+            <button>今月</button>
+            <button>
+                次月
+                <img src="arrowRight.png" alt="Right Arrow">
+            </button>
+        </div>
+    </div>
+
+    <!-- Calendar table -->
+    <table>
+        <thead>
+            <tr>
+                <th>月</th>
+                <th>火</th>
+                <th>水</th>
+                <th>木</th>
+                <th>金</th>
+                <th>土</th>
+                <th>日</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td class="date-cell"></td>
+                <td class="date-cell"></td>
+                <td class="date-cell"></td>
+                <td class="date-cell">1</td>
+                <td class="date-cell">2</td>
+                <td class="date-cell">3</td>
+                <td class="date-cell">4</td>
+            </tr>
+            <tr>
+                <td class="empty-cell"></td>
+                <td class="empty-cell"></td>
+                <td class="empty-cell"></td>
+                <td class="empty-cell"></td>
+                <td class="empty-cell"></td>
+                <td class="empty-cell"></td>
+                <td class="empty-cell"></td>
+            </tr>
+            <tr>
+                <td class="date-cell">5</td>
+                <td class="date-cell">6</td>
+                <td class="date-cell">7</td>
+                <td class="date-cell">8</td>
+                <td class="date-cell">9</td>
+                <td class="date-cell">10</td>
+                <td class="date-cell">11</td>
+            </tr>
+            <tr>
+                <td class="empty-cell"></td>
+                <td class="empty-cell"></td>
+                <td class="empty-cell"></td>
+                <td class="empty-cell"></td>
+                <td class="empty-cell"></td>
+                <td class="empty-cell"></td>
+                <td class="empty-cell"></td>
+            </tr>
+            <tr>
+                <td class="date-cell">12</td>
+                <td class="date-cell">13</td>
+                <td class="date-cell">14</td>
+                <td class="date-cell">15</td>
+                <td class="date-cell">16</td>
+                <td class="date-cell">17</td>
+                <td class="date-cell">18</td>
+            </tr>
+            <tr>
+                <td class="empty-cell"></td>
+                <td class="empty-cell"></td>
+                <td class="empty-cell"></td>
+                <td class="empty-cell"></td>
+                <td class="empty-cell"></td>
+                <td class="empty-cell"></td>
+                <td class="empty-cell"></td>
+            </tr>
+            <tr>
+                <td class="date-cell">19</td>
+                <td class="date-cell">20</td>
+                <td class="date-cell">21</td>
+                <td class="date-cell">22</td>
+                <td class="date-cell">23</td>
+                <td class="date-cell">24</td>
+                <td class="date-cell">25</td>
+            </tr>
+            <tr>
+                <td class="empty-cell"></td>
+                <td class="empty-cell"></td>
+                <td class="empty-cell"></td>
+                <td class="empty-cell"></td>
+                <td class="empty-cell"></td>
+                <td class="empty-cell"></td>
+                <td class="empty-cell"></td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+</body>
+
+</html>
