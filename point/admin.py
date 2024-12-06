@@ -1,6 +1,11 @@
 # admin.py (contributionApp)
 from django.contrib import admin
+from accounts.models import User
 from .models import Point
+
+# admin.site.register(User)
+# @admin.register(User)
+admin.site.register(User)
 
 @admin.register(Point)
 class PointAdmin(admin.ModelAdmin):
