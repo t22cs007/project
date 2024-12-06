@@ -23,6 +23,33 @@ class OnlyYouMixin(UserPassesTestMixin):
         user = self.request.user
         return user.pk == self.kwargs['pk'] or user.is_superuser
 
+#追加
+from .models import Item
+class ItemListView(TemplateView):
+    template_name = 'test/item_list.html'  # 使用するテンプレートを指定
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        item_type = self.request.GET.get('type', 'all')  # カテゴリフィルタ
+        order = self.request.GET.get('order', 'asc')    # 並べ替え（デフォルトは昇順）
+
+        # アイテムの取得とフィルタリング
+        items = Item.objects.all()
+        if item_type != 'all':
+            items = items.filter(type=item_type)
+
+        # 並べ替え
+        if order == 'asc':
+            items = items.order_by('point')  # 昇順
+        elif order == 'desc':
+            items = items.order_by('-point')  # 降順
+
+        # コンテキストにデータを渡す
+        context['items'] = items
+        context['selected_type'] = item_type
+        context['selected_order'] = order
+        return context
+
 class PostUpload(OnlyYouMixin, generic.CreateView):
     template_name = 'point/post_upload.html'
     form_class = Point
