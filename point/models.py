@@ -6,6 +6,24 @@ from django.utils.translation import gettext_lazy as _
 from accounts.models import User
 import random
 
+from django.db import models
+
+class Item(models.Model):
+    TYPE_CHOICES = [
+        ('food', '食べ物'),
+        ('good', 'グッズ'),
+        ('other', 'その他'),
+        ('chiket', '食券'),
+    ]
+    
+    name = models.CharField(max_length=255)  # 商品名
+    point = models.IntegerField()           # ポイント
+    image = models.ImageField(upload_to='item_images/')  # 商品画像
+    type = models.CharField(max_length=10, choices=TYPE_CHOICES)  # 商品カテゴリ
+
+    def __str__(self):
+        return self.name
+    
 # class Author(models.Model):
 #     name = models.CharField(max_length=200)
 #     created_by = models.ForeignKey(User, on_delete=models.CASCADE)

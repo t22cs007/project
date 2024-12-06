@@ -7,6 +7,11 @@ from .models import Point
 # @admin.register(User)
 admin.site.register(User)
 
+#追加した
+from .models import Item
+admin.site.register(Item)
+
+
 @admin.register(Point)
 class PointAdmin(admin.ModelAdmin):
     # 一覧表示のフィールドを指定
