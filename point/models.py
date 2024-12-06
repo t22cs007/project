@@ -20,6 +20,7 @@ class Item(models.Model):
     point = models.IntegerField()           # ポイント
     image = models.ImageField(upload_to='item_images/')  # 商品画像
     type = models.CharField(max_length=10, choices=TYPE_CHOICES)  # 商品カテゴリ
+    description = models.TextField(blank=True, null=True)  # 商品詳細情報
 
     def __str__(self):
         return self.name
