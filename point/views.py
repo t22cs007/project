@@ -49,6 +49,17 @@ class ItemListView(TemplateView):
         context['selected_type'] = item_type
         context['selected_order'] = order
         return context
+ 
+class ItemDetailView(TemplateView):
+    template_name = 'test/item_detail.html'  # 詳細ページのテンプレート
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        # URLのパラメータから商品ID (pk)を取得し、詳細情報を取得
+        pk = self.kwargs['pk']
+        item = Item.objects.get(pk=pk)
+        context['item'] = item
+        return context
 
 class PostUpload(OnlyYouMixin, generic.CreateView):
     template_name = 'point/post_upload.html'
